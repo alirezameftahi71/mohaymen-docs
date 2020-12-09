@@ -1,0 +1,50 @@
+$code-block-border-color: hsla(0, 0%, 89%, 1);
+
+::ng-deep {
+  .custom-anchor {
+    text-decoration: none;
+    padding-right: .5rem;
+  }
+
+  .code-block-header {
+    box-sizing: content-box;
+    background-color: #edf0f3;
+    color: hsla(0, 0%, 9%, 1);
+    display: flex;
+    flex-direction: row;
+    font-size: .8rem;
+    border: 1px solid $code-block-border-color;
+    border-bottom: 0;
+    margin-top: 16px;
+    min-height: 30px;
+  }
+
+  .language {
+    padding: 2px 16px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  pre {
+    border: 1px solid $code-block-border-color;
+    border-radius: 0 !important;
+    text-align: left;
+    direction: initial;
+  }
+
+  article {
+    font-family: "IRANSansWeb(FaNum)", Segoe UI, sans-serif, Apple Color Emoji, Segoe UI Emoji !important;
+  }
+
+  .markdown-body blockquote {
+    border: none;
+    border-inline-start: .25em solid #dfe2e5;
+  }
+
+  .code-block-header + pre {
+    margin-top: 0;
+  }
+}
+
+
+

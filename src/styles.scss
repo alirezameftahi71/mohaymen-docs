@@ -1,1 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~github-markdown-css/github-markdown.css';
+
+/* meftahi:
+یه زمانی اگر خواستید استایل هایلایت سینتکس شبیه ویژوال استودیو بشه در خط زیر به جای گیتهاب
+ vs
+ بذارید.*/
+@import '~highlight.js/scss/vs';
+
+html, body {
+  height: 100%;
+  font-size: 14px;
+}
+
+article {
+  font-size: initial;
+}
+
+body {
+  margin: 0;
+  font-family: "IRANSansWeb(FaNum)", sans-serif
+}
+
+* {
+  box-shadow: initial !important;
+}
+
+.min-height-fill {
+  min-height: calc(100% - 102px);
+}
+
+.sticky-top {
+  z-index: initial;
+}
+
+.direction {
+  direction: rtl;
+  text-align: right;
+}
+
+.dynamic-text-align-left {
+  direction: ltr;
+  text-align: left;
+}
+
+.dynamic-text-align-right {
+  direction: rtl;
+  text-align: right;
+}
+
+.custom-container {
+  margin-right: 16px;
+  margin-left: 16px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+@font-face {
+  font-family: "IRANSansWeb(FaNum)";
+  src: url("assets/fonts/IRANSansWeb.eot?") format("eot"), url("assets/fonts/IRANSansWeb.woff") format("woff"), url("assets/fonts/IRANSansWeb.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Extension Styles */
+
+/* Alerts */
+
+.ext-alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.ext-alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.ext-alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.ext-alert-primary {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+
+.ext-alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.ext-alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}

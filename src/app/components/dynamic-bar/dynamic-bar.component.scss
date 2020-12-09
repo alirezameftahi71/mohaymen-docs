@@ -1,0 +1,18 @@
+nav {
+  position: relative;
+}
+
+.edit-btn {
+  position: relative;
+  top: .2em;
+}
+
+a.breadcrumb-link {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  padding-left: .5rem;
+}

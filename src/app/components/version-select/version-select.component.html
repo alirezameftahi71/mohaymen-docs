@@ -1,0 +1,6 @@
+<div class="form-group mb-0 mb-2 direction">
+  <label for="versions-main">ورژن</label>
+  <select #selectVersion class="form-control" id="versions-main" [(ngModel)]="selectedVersionValue" (change)="onSelectedVersionChange(selectVersion.value)">
+    <option *ngFor="let version of versions" [value]="version.url">{{version.title}}</option>
+  </select>
+</div>

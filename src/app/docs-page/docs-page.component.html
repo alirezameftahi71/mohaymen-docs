@@ -1,0 +1,51 @@
+<div class="border-bottom">
+  <app-dynamic-bar [showEditBtn]="showEditBtn"
+                   [editBtnPath]="editBtnPath"
+                   [breadcrumbItems]="breadcrumbItems">
+  </app-dynamic-bar>
+</div>
+<div class="my-4">
+  <app-action-bar (sideMenuToggleClicked)="onSidebarToggleClick()"></app-action-bar>
+</div>
+<div class="px-md-5 custom-container direction" data-offset="1">
+  <div id="floating-sidebar" class="sidebar bg-white border-right d-lg-none d-xl-none">
+    <button type="button" class="close-btn close" aria-label="Close" (click)="hideSidebar()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <app-version-select (selectedVersionChanged)="onSelectedVersionChange($event)"
+                        [selectedVersionValue]="selectedVersion?.url"
+                        [versions]="versions">
+    </app-version-select>
+    <app-side-bar [selectedKeys]="selectedKeys"
+                  [expandedKeys]="expandedKeys"
+                  (selectionChanged)="onSidebarSelectionChange($event)"
+                  [items]="treeNodes">
+    </app-side-bar>
+  </div>
+  <div class="row min-height-fill">
+    <div class="col-xl-10 col-lg-10 order-1">
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 d-none d-lg-block d-xl-block order-1 bg-white">
+          <nav class="sticky-top pt-lg-4">
+            <app-version-select (selectedVersionChanged)="onSelectedVersionChange($event)"
+                                [selectedVersionValue]="selectedVersion?.url"
+                                [versions]="versions">
+            </app-version-select>
+            <app-side-bar [selectedKeys]="selectedKeys"
+                          [expandedKeys]="expandedKeys"
+                          (selectionChanged)="onSidebarSelectionChange($event)"
+                          [items]="treeNodes">
+            </app-side-bar>
+          </nav>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 order-2 p-0 pt-4 m-0">
+          <app-document-content [docContent]="docContent" (anchorsAdded)="onAnchorsAdd($event)"></app-document-content>
+        </div>
+      </div>
+    </div>
+    <nav class="col-xl-2 col-lg-2 order-xl-3 order-lg-3 order-md-0">
+      <app-toc [items]="tocItems"></app-toc>
+    </nav>
+  </div>
+</div>
+<div class="dimmer-layer" *ngIf="dimmerEnabled" (click)="onDimmerClick()"></div>

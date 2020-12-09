@@ -1,0 +1,480 @@
+<h1 id="docs-markdown-reference">Docs Markdown reference</h1>
+<p>This article provides an alphabetical reference for writing Markdown for docs.microsoft.com (Docs).</p>
+<p><a href="https://daringfireball.net/projects/markdown/">Markdown</a> is a lightweight markup language with plain text formatting syntax. Docs supports <a href="https://commonmark.org/">CommonMark</a> compliant Markdown parsed through the <a href="https://github.com/lunet-io/markdig">Markdig</a> parsing engine. Docs also supports custom Markdown extensions that provide richer content on the Docs site.</p>
+<p>You can use any text editor to write Markdown, but we recommend <a href="https://code.visualstudio.com/">Visual Studio Code</a> with the <a href="https://aka.ms/DocsAuthoringPack">Docs Authoring Pack</a>. The Docs Authoring Pack provides editing tools and preview functionality that lets you see what your articles will look like when rendered on Docs.</p>
+<h2 id="alerts-note-tip-important-caution-warning">Alerts (Note, Tip, Important, Caution, Warning)</h2>
+<p>Alerts are a Markdown extension to create block quotes that render on docs.microsoft.com with colors and icons that indicate the significance of the content. The following alert types are supported:</p>
+<pre><code class="language-markdown">&gt; [!NOTE]
+&gt; Information the user should notice even if skimming.
+
+&gt; [!TIP]
+&gt; Optional information to help a user be more successful.
+
+&gt; [!IMPORTANT]
+&gt; Essential information required for user success.
+
+&gt; [!CAUTION]
+&gt; Negative potential consequences of an action.
+
+&gt; [!WARNING]
+&gt; Dangerous certain consequences of an action.
+</code></pre>
+<p>These alerts look like this on docs.microsoft.com:</p>
+
+<div class="alert alert-info">
+  <p class="alert-title"><i class="fa fa-exclamation-circle"></i> NOTE</p>
+  <p>Information the user should notice even if skimming.</p>
+</div>
+
+<div class="alert alert-success">
+  <p class="alert-title"><i class="fa fa-lightbulb-o"></i> TIP</p>
+  <p>Optional information to help a user be more successful.</p>
+</div>
+
+<div class="alert alert-primary">
+  <p class="alert-title"><i class="fa fa-exclamation-circle"></i> IMPORTANT</p>
+  <p>Essential information required for user success.</p>
+</div>
+
+<div class="alert alert-danger">
+  <p class="alert-title"><i class="fa fa-times-circle"></i> CAUTION</p>
+  <p>Negative potential consequences of an action.</p>
+</div>
+
+<div class="alert alert-warning">
+  <p class="alert-title"><i class="fa fa-exclamation-triangle"></i> WARNING</p>
+  <p>Dangerous certain consequences of an action.</p>
+</div>
+
+<h3 id="angle-brackets">Angle brackets</h3>
+<p>If you use angle brackets in text in your file--for example, to denote a placeholder--you need to manually encode the angle brackets. Otherwise, Markdown thinks that they're intended to be an HTML tag.</p>
+<p>For example, encode <code>&lt;script name&gt;</code> as <code>&amp;lt;script name&amp;gt;</code> or <code>\&lt;script name&gt;</code>.</p>
+<p>Angle brackets don't have to be escaped in text formatted as inline code or in code blocks.</p>
+<h2 id="apostrophes-and-quotation-marks">Apostrophes and quotation marks</h2>
+<p>If you copy from Word into a Markdown editor, the text might contain &quot;smart&quot; (curly) apostrophes or quotation marks. These need to be encoded or changed to basic apostrophes or quotation marks. Otherwise, you end up with things like this when the file is published: Itâ€™s</p>
+<p>Here are the encodings for the &quot;smart&quot; versions of these punctuation marks:</p>
+<ul>
+<li>Left (opening) quotation mark: <code>&amp;#8220;</code></li>
+<li>Right (closing) quotation mark: <code>&amp;#8221;</code></li>
+<li>Right (closing) single quotation mark or apostrophe: <code>&amp;#8217;</code></li>
+<li>Left (opening) single quotation mark (rarely used): <code>&amp;#8216;</code></li>
+</ul>
+<h2 id="blockquotes">Blockquotes</h2>
+<p>Blockquotes are created using the <code>&gt;</code> character:</p>
+<pre><code class="language-md">&gt; This is a blockquote. It is usually rendered indented and with a different background color.
+</code></pre>
+<p>The preceding example renders as follows:</p>
+<blockquote>
+<p>This is a blockquote. It is usually rendered indented and with a different background color.</p>
+</blockquote>
+<h2 id="bold-and-italic-text">Bold and italic text</h2>
+<p>To format text as <strong>bold</strong>, enclose it in two asterisks:</p>
+<pre><code class="language-markdown">This text is **bold**.
+</code></pre>
+<p>To format text as <em>italic</em>, enclose it in a single asterisk:</p>
+<pre><code class="language-markdown">This text is *italic*.
+</code></pre>
+<p>To format text as both <em><strong>bold and italic</strong></em>, enclose it in three asterisks:</p>
+<pre><code class="language-markdown">This text is both ***bold and italic***.
+</code></pre>
+<h2 id="code-snippets">Code snippets</h2>
+<p>Docs Markdown supports the placement of code snippets both inline in a sentence and as a separate &quot;fenced&quot; block between sentences. For more information, see <a href="code-in-docs.md">How to add code to docs</a>.</p>
+<h2 id="columns">Columns</h2>
+<p>The <strong>columns</strong> Markdown extension gives Docs authors the ability to add column-based content layouts that are more flexible and powerful than basic Markdown tables, which are only suited for true tabular data. You can add up to four columns, and use the optional <code>span</code> attribute to merge two or more columns.</p>
+<p>The syntax for columns is as follows:</p>
+<pre><code class="language-markdown">:::row:::
+   :::column span=&quot;&quot;:::
+      Content...
+   :::column-end:::
+   :::column span=&quot;&quot;:::
+      More content...
+   :::column-end:::
+:::row-end:::
+</code></pre>
+<p>Columns should only contain basic Markdown, including images. Headings, tables, tabs, and other complex structures shouldn't be included. A row can't have any content outside of column.</p>
+<p>For example, the following Markdown creates one column that spans two column widths, and one standard (no <code>span</code>) column:</p>
+<pre><code class="language-markdown">:::row:::
+   :::column span=&quot;2&quot;:::
+      **This is a 2-span column with lots of text.**
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum mollis nunc
+      ornare commodo. Nullam ac metus imperdiet, rutrum justo vel, vulputate leo. Donec
+      rutrum non eros eget consectetur.
+   :::column-end:::
+   :::column span=&quot;&quot;:::
+      **This is a single-span column with an image in it.**
+
+      ![Doc.U.Ment](media/markdown-reference/document.png)
+   :::column-end:::
+:::row-end:::
+</code></pre>
+<p>This renders as follows:</p>
+<p>:::row:::
+:::column span=&quot;2&quot;:::
+<strong>This is a 2-span column with lots of text.</strong></p>
+<pre><code>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vestibulum mollis nunc
+  ornare commodo. Nullam ac metus imperdiet, rutrum justo vel, vulputate leo. Donec
+  rutrum non eros eget consectetur.
+</code></pre>
+<p>:::column-end:::
+:::column span=&quot;&quot;:::
+<strong>This is a single-span column with an image in it.</strong></p>
+<pre><code>  ![Doc.U.Ment](media/markdown-reference/document.png)
+</code></pre>
+<p>:::column-end:::
+:::row-end:::</p>
+<h2 id="headings">Headings</h2>
+<p>Docs supports six levels of Markdown headings:</p>
+<pre><code class="language-markdown"># This is a first level heading (H1)
+
+## This is a second level heading (H2)
+
+...
+
+###### This is a sixth level heading (H6)
+</code></pre>
+<ul>
+<li>There must be a space between the last <code>#</code> and heading text.</li>
+<li>Each Markdown file must have one and only one H1 heading.</li>
+<li>The H1 heading must be the first content in the file after the YML metadata block.</li>
+<li>H2 headings automatically appear in the right-hand navigating menu of the published file. Lower-level headings don't appear, so use H2s strategically to help readers navigate your content.</li>
+<li>HTML headings, such as <code>&lt;h1&gt;</code>, aren't recommended, and in some cases will cause build warnings.</li>
+<li>You can link to individual headings in a file via <a href="how-to-write-links.md#explicit-anchor-links">bookmark links</a>.</li>
+</ul>
+<h2 id="html">HTML</h2>
+<p>Although Markdown supports inline HTML, HTML isn't recommended for publishing to Docs, and except for a limited list of values will cause build errors or warnings.</p>
+<h2 id="images">Images</h2>
+<p>The following file types are supported by default for images:</p>
+<ul>
+<li>.jpg</li>
+<li>.png</li>
+</ul>
+<h3 id="standard-conceptual-images-default-markdown">Standard conceptual images (default Markdown)</h3>
+<p>The basic Markdown syntax to embed an image is:</p>
+<pre><code class="language-Markdown">![&lt;alt text&gt;](&lt;folderPath&gt;)
+
+Example:
+![alt text for image](../images/Introduction.png)
+</code></pre>
+<p>Where <code>&lt;alt text&gt;</code> is a brief description of the image and <code>&lt;folder path&gt;</code> is a relative path to the image. Alternate text is required for screen readers for the visually impaired. It's also useful if there's a site bug where the image can't render.</p>
+<p>Underscores in alt text aren't rendered properly unless you escape them by prefixing them with a backslash (<code>\_</code>). However, don't copy file names for use as alt text. For example, instead of this:</p>
+<pre><code class="language-markdown">![ADextension_2FA_Configure_Step4](./media/bogusfilename/ADextension_2FA_Configure_Step4.PNG)
+</code></pre>
+<p>Write this:</p>
+<pre><code class="language-markdown">![Active Directory extension for two-factor authentication, step 4: Configure](./media/bogusfilename/ADextension_2FA_Configure_Step4.PNG)
+</code></pre>
+<h3 id="standard-conceptual-images-docs-markdown">Standard conceptual images (Docs Markdown)</h3>
+<p>The Docs custom <code>:::image:::</code> extension supports standard images, complex images, and icons.</p>
+<p>For standard images, the older Markdown syntax will still work, but the new extension is recommended because it supports more powerful functionality, such as specifying a localization scope that's different from the parent topic. Other advanced functionality, such as selecting from the shared image gallery instead of specifying a local image, will be available in the future. The new syntax is as follows:</p>
+<pre><code class="language-Markdown">:::image type=&quot;content&quot; source=&quot;&lt;folderPath&gt;&quot; alt-text=&quot;&lt;alt text&gt;&quot;:::
+</code></pre>
+<p>If <code>type=&quot;content&quot;</code> (the default), both <code>source</code> and <code>alt-text</code> are required.</p>
+<h3 id="complex-images-with-long-descriptions">Complex images with long descriptions</h3>
+<p>You can also use this extension to add an image with a long description that is read by screen readers but not rendered visually on the published page. Long descriptions are an accessibility requirement for complex images, such as graphs. The syntax is the following:</p>
+<pre><code class="language-Markdown">:::image type=&quot;complex&quot; source=&quot;&lt;folderPath&gt;&quot; alt-text=&quot;&lt;alt text&gt;&quot;:::
+   &lt;long description here&gt;
+:::image-end:::
+</code></pre>
+<p>If <code>type=&quot;complex&quot;</code>, <code>source</code>, <code>alt-text</code>, a long description, and the <code>:::image-end:::</code> tag are all required.</p>
+<h3 id="specifying-loc-scope">Specifying loc-scope</h3>
+<p>Sometimes the localization scope for an image is different from that of the article or module that contains it. This can cause a bad global experience: for example, if a screenshot of a product is accidentally localized into a language the product isn't available in. To prevent this, you can specify the optional <code>loc-scope</code> attribute in images of types <code>content</code> and <code>complex</code>.</p>
+<h3 id="icons">Icons</h3>
+<p>The image extension supports icons, which are decorative images and should not have alt text. The syntax for icons is:</p>
+<pre><code class="language-Markdown">:::image type=&quot;icon&quot; source=&quot;&lt;folderPath&gt;&quot;:::
+</code></pre>
+<p>If <code>type=&quot;icon&quot;</code>, only <code>source</code> should be specified.</p>
+<h2 id="included-markdown-files">Included Markdown files</h2>
+<p>Where markdown files need to be repeated in multiple articles, you can use an include file. The includes feature instructs Docs to replace the reference with the contents of the include file at build time. You can use includes in the following ways:</p>
+<ul>
+<li>Inline: Reuse a common text snippet inline with within a sentence.</li>
+<li>Block: Reuse an entire Markdown file as a block, nested within a section of an article.</li>
+</ul>
+<p>An inline or block include file is a Markdown (.md) file. It can contain any valid Markdown. Include files are typically located in a common <em>includes</em> subdirectory, in the root of the repository. When the article is published, the included file is seamlessly integrated into it.</p>
+<h3 id="includes-syntax">Includes syntax</h3>
+<p>Block include is on its own line:</p>
+<pre><code class="language-markdown">[!INCLUDE [&lt;title&gt;](&lt;filepath&gt;)]
+</code></pre>
+<p>Inline include is within a line:</p>
+<pre><code class="language-markdown">Text before [!INCLUDE [&lt;title&gt;](&lt;filepath&gt;)] and after.
+</code></pre>
+<p>Where <code>&lt;title&gt;</code> is the name of the file and <code>&lt;filepath&gt;</code> is the relative path to the file. <code>INCLUDE</code> must be capitalized and there must be a space before the <code>&lt;title&gt;</code>.</p>
+<p>Here are requirements and considerations for include files:</p>
+<ul>
+<li>Use block includes for significant amounts of content--a paragraph or two, a shared procedure, or a shared section. Do not use them for anything smaller than a sentence.</li>
+<li>Includes won't be rendered in the GitHub rendered view of your article, because they rely on Docs extensions. They'll be rendered only after publication.</li>
+<li>Ensure that all the text in an include file is written in complete sentences or phrases that do not depend on preceding text or following text in the article that references the include. Ignoring this guidance creates an untranslatable string in the article.</li>
+<li>Don't embed include files within other include files.</li>
+<li>Place media files in a media folder that's specific to the include subdirectory--for instance, the <code>&lt;repo&gt;</code><em>/includes/media</em> folder. The <em>media</em> directory should not contain any images in its root. If the include does not have images, a corresponding <em>media</em> directory is not required.</li>
+<li>As with regular articles, don't share media between include files. Use a separate file with a unique name for each include and article. Store the media file in the media folder that's associated with the include.</li>
+<li>Don't use an include as the only content of an article.  Includes are meant to be supplemental to the content in the rest of the article.</li>
+</ul>
+<h2 id="links">Links</h2>
+<p>For information on syntax for links, see <a href="how-to-write-links.md">Use links in documentation</a>.</p>
+<h2 id="lists-numbered-bulleted-checklist">Lists (Numbered, Bulleted, Checklist)</h2>
+<h3 id="numbered-list">Numbered list</h3>
+<p>To create a numbered list, you can use all 1s. The numbers are rendered in ascending order as a sequential list when published. For increased source readability, you can increment your lists manually.</p>
+<p>Don't use letters in lists, including nested lists. They don't render correctly when published to Docs. Nested lists using numbers will render as lowercase letters when published. For example:</p>
+<pre><code class="language-markdown">1. This is
+1. a parent numbered list
+   1. and this is
+   1. a nested numbered list
+1. (fin)
+</code></pre>
+<p>This renders as follows:</p>
+<ol>
+<li>This is</li>
+<li>a parent numbered list
+<ol>
+<li>and this is</li>
+<li>a nested numbered list</li>
+</ol>
+</li>
+<li>(fin)</li>
+</ol>
+<h3 id="bulleted-list">Bulleted list</h3>
+<p>To create a bulleted list, use <code>-</code> or <code>*</code> followed by a space at the beginning of each line:</p>
+<pre><code class="language-markdown">- This is
+- a parent bulleted list
+  - and this is
+  - a nested bulleted list
+- All done!
+</code></pre>
+<p>This renders as follows:</p>
+<ul>
+<li>This is</li>
+<li>a parent bulleted list
+<ul>
+<li>and this is</li>
+<li>a nested bulleted list</li>
+</ul>
+</li>
+<li>All done!</li>
+</ul>
+<p>Whichever syntax you use, <code>-</code> or <code>*</code>, use it consistently within an article.</p>
+<h3 id="checklist">Checklist</h3>
+<p>Checklists are available for use on Docs via a custom Markdown extension:</p>
+<pre><code class="language-markdown">&gt; [!div class=&quot;checklist&quot;]
+&gt; * List item 1
+&gt; * List item 2
+&gt; * List item 3
+</code></pre>
+<p>This example renders on Docs like this:</p>
+<blockquote>
+<p>[!div class=&quot;checklist&quot;]</p>
+<ul>
+<li>List item 1</li>
+<li>List item 2</li>
+<li>List item 3</li>
+</ul>
+</blockquote>
+<p>Use checklists at the beginning or end of an article to summarize &quot;What will you learn&quot; or &quot;What have you learned&quot; content. Do not add random checklists throughout your articles.</p>
+<h2 id="next-step-action">Next step action</h2>
+<p>You can use a custom extension to add a next step action button to Docs pages.</p>
+<p>The syntax is as follows:</p>
+<pre><code class="language-markdown">&gt; [!div class=&quot;nextstepaction&quot;]
+&gt; [button text](link to topic)
+</code></pre>
+<p>For example:</p>
+<pre><code class="language-markdown">&gt; [!div class=&quot;nextstepaction&quot;]
+&gt; [Learn about adding code to articles](code-in-docs.md)
+</code></pre>
+<p>This renders as follows:</p>
+<blockquote>
+<p>[!div class=&quot;nextstepaction&quot;]
+<a href="code-in-docs.md">Learn about adding code to articles</a></p>
+</blockquote>
+<p>You can use any supported link in a next step action, including a Markdown link to another web page. In most cases, the next action link will be a relative link to another file in the same docset.</p>
+<h2 id="non-localized-strings">Non-localized strings</h2>
+<p>You can use the custom <code>no-loc</code> Markdown extension to identify strings of content that you would like the localization process to ignore.</p>
+<p>All strings called out will be case-sensitive; that is, the string must match exactly to be ignored for localization.</p>
+<p>To mark an individual string as non-localizable, use this syntax:</p>
+<pre><code class="language-markdown">:::no-loc text=&quot;String&quot;:::
+</code></pre>
+<p>For example, in the following, only the single instance of <code>Document</code> will be ignored during the localization process:</p>
+<pre><code class="language-markdown"># Heading 1 of the Document
+
+Markdown content within the :::no-loc text=&quot;Document&quot;:::.  The are multiple instances of Document, document, and documents.
+</code></pre>
+<blockquote>
+<p>[!NOTE]
+Use <code>\</code> to escape special characters:</p>
+<pre><code class="language-markdown">Lorem :::no-loc text=&quot;Find a \&quot;Quotation\&quot;&quot;::: Ipsum.
+</code></pre>
+</blockquote>
+<p>You can also use metadata in the YAML header to mark all instances of a string within the current Markdown file as non-localizable:</p>
+<pre><code class="language-yml">author: cillroy
+no-loc: [Global, Strings, to be, Ignored]
+</code></pre>
+<blockquote>
+<p>[!NOTE]
+The no-loc metadata is not supported as global metadata in <em>docfx.json</em> file. The localization pipeline doesn't read the <em>docfx.json</em> file, so the no-loc metadata must be added into each individual source file.</p>
+</blockquote>
+<p>In the following example, both in the metadata <code>title</code> and the Markdown header the word <code>Document</code> will be ignored during the localization process.</p>
+<p>In the metadata <code>description</code> and the Markdown main content the word <code>document</code> is localized, because it does not start with a capital <code>D</code>.</p>
+<pre><code class="language-markdown">---
+title: Title of the Document
+author: author-name
+description: Description for the document
+no-loc: [Title, Document]
+---
+# Heading 1 of the Document
+
+Markdown content within the document.
+</code></pre>
+<!-- commenting out for now because no one knows what this means
+## Section definition
+
+You might need to define a section. This syntax is mostly used for code tables.
+See the following example:
+
+````
+> [!div class="tabbedCodeSnippets" data-resources="OutlookServices.Calendar"]
+> ```cs
+> <cs code text>
+> ```
+> ```javascript
+> <js code text>
+> ```
+````
+
+The preceding blockquote Markdown text will be rendered as:
+> [!div class="tabbedCodeSnippets" data-resources="OutlookServices.Calendar"]
+> ```cs
+> <cs code text>
+> ```
+> ```javascript
+> <js code text>
+> ```
+-->
+<h2 id="selectors">Selectors</h2>
+<p>Selectors are UI elements that let the user switch between multiple flavors of the same article. They are used in some doc sets to address differences in implementation across technologies or platforms. Selectors are typically most applicable to our mobile platform content for developers.</p>
+<p>Because the same selector Markdown goes in each article file that uses the selector, we recommend placing the selector for your article in an include file. Then you can reference that include file in all your article files that use the same selector.</p>
+<p>There are two types of selectors: a single selector and a multi-selector.</p>
+<h3 id="single-selector">Single selector</h3>
+<pre><code class="language-markdown">&gt; [!div class=&quot;op_single_selector&quot;]
+&gt; - [Universal Windows](../articles/notification-hubs-windows-store-dotnet-get-started/)
+&gt; - [Windows Phone](../articles/notification-hubs-windows-phone-get-started/)
+&gt; - [iOS](../articles/notification-hubs-ios-get-started/)
+&gt; - [Android](../articles/notification-hubs-android-get-started/)
+&gt; - [Kindle](../articles/notification-hubs-kindle-get-started/)
+&gt; - [Baidu](../articles/notification-hubs-baidu-get-started/)
+&gt; - [Xamarin.iOS](../articles/partner-xamarin-notification-hubs-ios-get-started/)
+&gt; - [Xamarin.Android](../articles/partner-xamarin-notification-hubs-android-get-started/)
+</code></pre>
+<p>... will be rendered like this:</p>
+<blockquote>
+<p>[!div class=&quot;op_single_selector&quot;]</p>
+<ul>
+<li><a href="how-to-write-links.md">Universal Windows</a></li>
+<li><a href="how-to-write-links.md">Windows Phone</a></li>
+<li><a href="how-to-write-links.md">iOS</a></li>
+<li><a href="how-to-write-links.md">Android</a></li>
+<li><a href="how-to-write-links.md">Kindle</a></li>
+<li><a href="how-to-write-links.md">Baidu</a></li>
+<li><a href="how-to-write-links.md">Xamarin.iOS</a></li>
+<li><a href="how-to-write-links.md">Xamarin.Android</a></li>
+</ul>
+</blockquote>
+<h3 id="multi-selector">Multi-selector</h3>
+<pre><code class="language-markdown">&gt; [!div class=&quot;op_multi_selector&quot; title1=&quot;Platform&quot; title2=&quot;Backend&quot;]
+&gt; - [(iOS | .NET)](./mobile-services-dotnet-backend-ios-get-started-push.md)
+&gt; - [(iOS | JavaScript)](./mobile-services-javascript-backend-ios-get-started-push.md)
+&gt; - [(Windows universal C# | .NET)](./mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md)
+&gt; - [(Windows universal C# | Javascript)](./mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)
+&gt; - [(Windows Phone | .NET)](./mobile-services-dotnet-backend-windows-phone-get-started-push.md)
+&gt; - [(Windows Phone | Javascript)](./mobile-services-javascript-backend-windows-phone-get-started-push.md)
+&gt; - [(Android | .NET)](./mobile-services-dotnet-backend-android-get-started-push.md)
+&gt; - [(Android | Javascript)](./mobile-services-javascript-backend-android-get-started-push.md)
+&gt; - [(Xamarin iOS | Javascript)](./partner-xamarin-mobile-services-ios-get-started-push.md)
+&gt; - [(Xamarin Android | Javascript)](./partner-xamarin-mobile-services-android-get-started-push.md)
+</code></pre>
+<p>... will be rendered like this:</p>
+<blockquote>
+<p>[!div class=&quot;op_multi_selector&quot; title1=&quot;Platform&quot; title2=&quot;Backend&quot;]</p>
+<ul>
+<li><a href="how-to-write-links.md">(iOS | .NET)</a></li>
+<li><a href="how-to-write-links.md">(iOS | JavaScript)</a></li>
+<li><a href="how-to-write-links.md">(Windows universal C# | .NET)</a></li>
+<li><a href="how-to-write-links.md">(Windows universal C# | Javascript)</a></li>
+<li><a href="how-to-write-links.md">(Windows Phone | .NET)</a></li>
+<li><a href="how-to-write-links.md">(Windows Phone | Javascript)</a></li>
+<li><a href="how-to-write-links.md">(Android | .NET)</a></li>
+<li><a href="how-to-write-links.md">(Android | Javascript)</a></li>
+<li><a href="how-to-write-links.md">(Xamarin iOS | Javascript)</a></li>
+<li><a href="how-to-write-links.md">(Xamarin Android | Javascript)</a></li>
+</ul>
+</blockquote>
+<h2 id="subscript-and-superscript">Subscript and superscript</h2>
+<p>You should only use subscript or superscript when necessary for technical accuracy, such as when writing about mathematical formulas. Don't use them for non-standard styles, such as footnotes.</p>
+<p>For both subscript and superscript, use HTML:</p>
+<pre><code class="language-html">Hello &lt;sub&gt;This is subscript!&lt;/sub&gt;
+</code></pre>
+<p>This renders as follows:</p>
+<p>Hello <sub>This is subscript!</sub></p>
+<pre><code class="language-html">Goodbye &lt;sup&gt;This is superscript!&lt;/sup&gt;
+</code></pre>
+<p>This renders as follows:</p>
+<p>Goodbye <sup>This is superscript!</sup></p>
+<h2 id="tables">Tables</h2>
+<p>The simplest way to create a table in Markdown is to use pipes and lines. To create a standard table with a header, follow the first line with dashed line:</p>
+<pre><code class="language-markdown">|This is   |a simple   |table header|
+|----------|-----------|------------|
+|table     |data       |here        |
+|it doesn't|actually   |have to line up nicely!|
+</code></pre>
+<p>This renders as follows:</p>
+<p>|This is   |a simple   |table header|
+|----------|-----------|------------|
+|table     |data       |here        |
+|it doesn't|actually   |have to line up nicely!||</p>
+<p>You can align the columns by using colons:</p>
+<pre><code class="language-markdown">| Fun                  | With                 | Tables          |
+| :------------------- | -------------------: |:---------------:|
+| left-aligned column  | right-aligned column | centered column |
+| $100                 | $100                 | $100            |
+| $10                  | $10                  | $10             |
+| $1                   | $1                   | $1              |
+</code></pre>
+<p>Renders as follows:</p>
+<p>| Fun                  | With                 | Tables          |
+| :------------------- | -------------------: |:---------------:|
+| left-aligned column  | right-aligned column | centered column |
+| $100                 | $100                 | $100            |
+| $10                  | $10                  | $10             |
+| $1                   | $1                   | $1              |</p>
+<blockquote>
+<p>[!TIP]
+The Docs Authoring Extension for VS Code makes it easy to add basic Markdown tables!</p>
+<p>You can also use an <a href="http://www.tablesgenerator.com/markdown_tables">online table generator</a>.</p>
+</blockquote>
+<h3 id="line-breaks-within-words-in-any-table-cell">Line breaks within words in any table cell</h3>
+<p>Long words in a Markdown table might make the table expand to the right navigation and become unreadable. You can solve that by allowing Docs rendering to automatically insert line breaks within words when needed. Just wrap up the table with the custom class <code>[!div class=&quot;mx-tdBreakAll&quot;]</code>.</p>
+<p>Here is a Markdown sample of a table with three rows that will be wrapped by a <code>div</code> with the class name <code>mx-tdBreakAll</code>.</p>
+<pre><code class="language-markdown">&gt; [!div class=&quot;mx-tdBreakAll&quot;]
+&gt; |Name|Syntax|Mandatory for silent installation?|Description|
+&gt; |-------------|----------|---------|---------|
+&gt; |Quiet|/quiet|Yes|Runs the installer, displaying no UI and no prompts.|
+&gt; |NoRestart|/norestart|No|Suppresses any attempts to restart. By default, the UI will prompt before restart.|
+&gt; |Help|/help|No|Provides help and quick reference. Displays the correct use of the setup command, including a list of all options and behaviors.|
+</code></pre>
+<p>It will be rendered like this:</p>
+<blockquote>
+<p>[!div class=&quot;mx-tdBreakAll&quot;]
+|Name|Syntax|Mandatory for silent installation?|Description|
+|-------------|----------|---------|---------|
+|Quiet|/quiet|Yes|Runs the installer, displaying no UI and no prompts.|
+|NoRestart|/norestart|No|Suppresses any attempts to restart. By default, the UI will prompt before restart.|
+|Help|/help|No|Provides help and quick reference. Displays the correct use of the setup command, including a list of all options and behaviors.|</p>
+</blockquote>
+<h3 id="line-breaks-within-words-in-second-column-table-cells">Line breaks within words in second column table cells</h3>
+<p>You might want line breaks to be automatically inserted within words only in the second column of a table. To limit the breaks to the second column, apply the class <code>mx-tdCol2BreakAll</code> by using the <code>div</code> wrapper syntax as shown earlier.</p>
+<h3 id="data-matrix-tables">Data matrix tables</h3>
+<p>A data matrix table has both a header and a weighted first column, creating a matrix with an empty cell in the top left. Docs has custom Markdown for data matrix tables:</p>
+<pre><code class="language-md">|                  |Header 1 |Header 2|
+|------------------|---------|--------|
+|**First column A**|Cell 1A  |Cell 2A |
+|**First column B**|Cell 1B  |Cell 2B |
+</code></pre>
+<p>Every entry in the first column must be styled as bold (<code>**bold**</code>); otherwise the tables won't be accessible for screen readers or valid for Docs.</p>
+<h3 id="html-tables">HTML Tables</h3>
+<p>HTML tables aren't recommended for docs.microsoft.com. They aren't human readable in the source - which is a key principle of Markdown.</p>

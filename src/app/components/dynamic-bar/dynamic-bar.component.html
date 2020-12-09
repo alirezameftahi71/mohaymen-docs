@@ -1,0 +1,24 @@
+<nav class="direction px-md-5 custom-container d-flex justify-content-between">
+  <ol class="breadcrumb px-0 py-2 mb-0 bg-white ">
+    <li *ngFor="let item of breadcrumbItems"
+        class="breadcrumb-item">
+      <a *ngIf="!!item.url; else noLinkBreadcrumb" class="breadcrumb-link" routerLink="{{item.url}}">
+        {{item.title}}
+      </a>
+      <ng-template #noLinkBreadcrumb>
+        <span class="breadcrumb-link">
+          {{item.title}}
+        </span>
+      </ng-template>
+    </li>
+  </ol>
+  <div class="align-opposite">
+    <div class="edit-btn is-icon">
+      <a class="btn" title="ویرایش" [href]="editBtnPath" *ngIf="showEditBtn">
+        <fa-icon [icon]="faCoffee">ویرایش</fa-icon>
+        <!-- <fa name="pencil">ویرایش</fa> -->
+      </a>
+    </div>
+  </div>
+
+</nav>

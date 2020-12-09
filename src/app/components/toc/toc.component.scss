@@ -1,0 +1,14 @@
+$custom-border-color: transparent;
+$custom-border-color-hover: #0065b3;
+
+$custom-font-color: #0065b3;
+$custom-font-color-hover: #00518f;
+
+a {
+  color: $custom-font-color;
+  border-inline-start: 3px solid $custom-border-color;
+
+  &:hover {
+    border-inline-start: 3px solid $custom-border-color-hover;
+  }
+}

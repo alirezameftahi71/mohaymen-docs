@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <app-time-to-read [wordCount]="wordCount"></app-time-to-read>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-12">
+      <article dir="auto" class="text-justify markdown-body" [innerHTML]="docContent | safeHtml"></article>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+$custom-gray: #5e5e5e;
+.navbar-brand {
+  img {
+    height: 35px;
+    padding-inline-end: .4em;
+  }
+}
+
+.custom-navbar-toggler {
+  font-size: 14px;
+  margin-inline-end: .4em;
+}
+
+.navbar-nav {
+  padding-inline-start: 1.3em;
+}
+
+.separator {
+  width: 1.5em;
+  height: 1.5em;
+  border-inline-end: 2px solid $custom-gray;
+}
+
+@media (min-width: 768px) {
+  a:not(.navbar-brand) {
+    span {
+      vertical-align: sub;
+    }
+
+    &:hover {
+      span {
+        border-bottom: 2px solid $custom-gray;
+      }
+    }
+
+    &.active {
+      font-weight: bold;
+    }
+  }
+}
+
+

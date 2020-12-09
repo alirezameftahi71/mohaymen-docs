@@ -1,0 +1,135 @@
+<h1 id="markdown-sample">Markdown Sample</h1>
+<h2 id="headings">Headings</h2>
+<p>You can use one <code>#</code> all the way up to <code>######</code> six for different heading sizes.</p>
+<h2 id="font-weight">Font Weight</h2>
+<p>It's very easy to make some words <strong>bold</strong> and other words <em>italic</em> with Markdown.</p>
+<h2 id="link">Link</h2>
+<p>You can even <a href="http://google.com">link to Google!</a></p>
+<h2 id="subscript-and-superscript">Subscript and superscript</h2>
+<p>You should only use subscript or superscript when necessary for technical accuracy, such as when writing about mathematical formulas. Don't use them for non-standard styles, such as footnotes.</p>
+<p>For both subscript and superscript, use HTML:</p>
+<pre><code class="language-html">Hello &lt;sub&gt;This is subscript!&lt;/sub&gt;
+Goodbye &lt;sup&gt;This is superscript!&lt;/sup&gt;
+</code></pre>
+<p>Which renders as follows:</p>
+<p>Hello <sub>This is subscript!</sub></p>
+<p>Goodbye <sup>This is superscript!</sup></p>
+<h2 id="lists">Lists</h2>
+<p>Sometimes you want numbered lists:</p>
+<ol>
+<li>One</li>
+<li>Two</li>
+<li>Three</li>
+</ol>
+<p>Sometimes you want bullet points:</p>
+<ul>
+<li>Start a line with a star</li>
+<li>Profit!</li>
+</ul>
+<p>Alternatively,</p>
+<ul>
+<li>Dashes work just as well</li>
+<li>And if you have sub points, put two spaces before the dash or star:
+<ul>
+<li>Like this</li>
+<li>And this</li>
+</ul>
+</li>
+</ul>
+<h2 id="images">Images</h2>
+<p>If you want to embed images, this is how you do it:</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/1280px-Markdown-mark.svg.png" alt="Image of Yaktocat" /></p>
+<h2 id="quote-blocks">Quote Blocks</h2>
+<p>If you'd like to quote someone, use the &gt; character before the line:</p>
+<blockquote>
+<p>Coffee. The finest organic suspension ever devised... I beat the Borg with it.</p>
+<ul>
+<li>Captain Janeway</li>
+</ul>
+</blockquote>
+<h2 id="alerts">Alerts</h2>
+<pre><code class="language-markdown">&gt; [!NOTE]
+&gt; Information the user should notice even if skimming.
+
+&gt; [!TIP]
+&gt; Optional information to help a user be more successful.
+
+&gt; [!IMPORTANT]
+&gt; Essential information required for user success.
+
+&gt; [!CAUTION]
+&gt; Negative potential consequences of an action.
+
+&gt; [!WARNING]
+&gt; Dangerous certain consequences of an action.
+</code></pre>
+<p>Will render as follows:</p>
+<div class="alert alert-info">
+  <p class="alert-title"><i class="fa fa-exclamation-circle"></i> NOTE</p>
+  <p>Information the user should notice even if skimming.</p>
+</div>
+<div class="alert alert-success">
+  <p class="alert-title"><i class="fa fa-lightbulb-o"></i> TIP</p>
+  <p>Optional information to help a user be more successful.</p>
+</div>
+<div class="alert alert-primary">
+  <p class="alert-title"><i class="fa fa-exclamation-circle"></i> IMPORTANT</p>
+  <p>Essential information required for user success.</p>
+</div>
+<div class="alert alert-danger">
+  <p class="alert-title"><i class="fa fa-times-circle"></i> CAUTION</p>
+  <p>Negative potential consequences of an action.</p>
+</div>
+<div class="alert alert-warning">
+  <p class="alert-title"><i class="fa fa-exclamation-triangle"></i> WARNING</p>
+  <p>Dangerous certain consequences of an action.</p>
+</div>
+<h2 id="code">Code</h2>
+<p>Wrap the code in three backtics and include the language for syntax highlighting:</p>
+<pre><code class="language-javascript">const createElementFromString = htmlString =&gt; {
+  const div = document.createElement('div');
+  div.innerHTML = htmlString.trim();
+  return div.firstChild;
+}
+</code></pre>
+<p>Or</p>
+<pre><code class="language-csharp">public List&lt;string&gt; GetAllFiles(string srcPath)
+{
+    var files = Directory.GetFiles(srcPath);
+    return new List&lt;string&gt;(files);
+}
+</code></pre>
+<h2 id="tables">Tables</h2>
+<p>The simplest way to create a table in Markdown is to use pipes and lines. To create a standard table with a header, follow the first line with dashed line:</p>
+<pre><code class="language-markdown">| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align: center;">Are</th>
+<th style="text-align: right;">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align: center;">right-aligned</td>
+<td style="text-align: right;">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align: center;">centered</td>
+<td style="text-align: right;">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align: center;">are neat</td>
+<td style="text-align: right;">$1</td>
+</tr>
+</tbody>
+</table>

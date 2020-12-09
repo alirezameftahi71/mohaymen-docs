@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-md navbar-light py-1 px-md-5 bg-white direction border-bottom">
+  <a class="navbar-brand" routerLink="/"><img [src]="brandLogoUrl" alt="logo"><span
+    class="text-muted">{{brandName}}</span></a>
+  <button class="navbar-toggler custom-navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+          aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div *ngIf="navBarService.navbarButtons?.length" class="separator d-none d-md-block"></div>
+  <div class="collapse navbar-collapse" id="navbarToggler">
+    <!-- meftahi: mr-auto for ltr -->
+    <ul class="navbar-nav">
+      <li *ngFor="let item of navBarService.navbarButtons"
+          [routerLinkActiveOptions]="{exact:true}"
+          [routerLinkActive]="['active']"
+          title="{{item.title}}"
+          class="nav-item">
+        <a class="nav-link" [routerLink]="[item.url]"><span>{{item.title}}</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>

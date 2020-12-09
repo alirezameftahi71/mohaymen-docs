@@ -1,0 +1,29 @@
+<nav class="list-group list-group-flush direction">
+  <div class="input-group mb-3 search-container">
+    <div class="input-group-prepend">
+      <div class="input-group-text bg-white">
+        <i class="icon fa fa-search"></i>
+      </div>
+    </div>
+    <input class="form-control shadow-none"
+           type="search"
+           id="search-box"
+           placeholder="جست‌و‌جو..."
+           #searchBox
+           [(ngModel)]="searchTerm"
+           (input)="onkeyup(searchBox.value)">
+  </div>
+  <kendo-treeview [nodes]="dataSource"
+                  [animate]="false"
+                  [isSelected]="isItemSelected"
+                  [isExpanded]="isItemExpanded"
+                  [(selectedKeys)]="selectedKeys"
+                  [expandedKeys]="expandedKeys"
+                  (selectionChange)="onSelectionChange($event)"
+                  textField="title"
+                  kendoTreeViewExpandable
+                  kendoTreeViewHierarchyBinding
+                  kendoTreeViewSelectable
+                  childrenField="children">
+  </kendo-treeview>
+</nav>

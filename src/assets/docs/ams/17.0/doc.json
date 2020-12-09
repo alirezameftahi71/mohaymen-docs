@@ -1,0 +1,19 @@
+[
+  {
+    "title": "توضیحات",
+    "url": "overview",
+    "type": "file"
+  },
+  {
+	"title": "لیست",
+	"url": "list",
+	"type": "folder",
+	"documents": [
+		{
+			"title": "نمودار",
+			"url": "list/chart",
+			"type": "file"
+		}
+	]
+  }
+]

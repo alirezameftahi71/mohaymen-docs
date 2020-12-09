@@ -1,0 +1,121 @@
+<h1 id="section">نمونه مارک‌داون</h1>
+<h2 id="section-1">سرفصل‌ها</h2>
+<p>شما میتوانید با استفاده از <code>#</code> تا <code>######</code> شش سربرگ تعریف کنید.</p>
+<h2 id="section-2">وزن فونتها</h2>
+<p>به آسانی میتوان بعضی کلمات را <strong>بلد</strong> و بعضی را <strong>ایتالیک</strong> کرد.</p>
+<h2 id="section-3">لینکها</h2>
+<p>حتی میتوانید <a href="http://google.com">لینک قرار دهید!</a></p>
+<h2 id="section-4">ساب اسکریپت و سوپر اسکریپت</h2>
+<p>فقط ساب اسکریپت و سوپر اسکریپ را در مواقع ضروری استفاده کنید.</p>
+<p>برای هردو باید از اچ‌تی‌ام‌ال کمک بگیرید.</p>
+<pre><code class="language-html">سلام &lt;sub&gt;این یک ساب اسکریپت است!&lt;/sub&gt;
+خداحافظ &lt;sup&gt;این یک سپر اسکریپت است!&lt;/sup&gt;
+</code></pre>
+<p>که به صورت زیر رندر می‌شود:</p>
+<p>سلام <sub>این یک ساب اسکریپت است!</sub></p>
+<p>خداحافظ <sup>این یک سپر اسکریپت است!</sup></p>
+<h2 id="section-5">لیست‌ها</h2>
+<p>گاهی لیستهای شماره دار میخواهید:</p>
+<ol>
+<li>یک</li>
+<li>دو</li>
+<li>سه</li>
+</ol>
+<p>گاهی لیستهای بولت دار میخواهد:</p>
+<ul>
+<li>یک خط را با یک ستاره شروع کنید</li>
+<li>لیست بولت دار میشود!</li>
+</ul>
+<p>همچنین,</p>
+<ul>
+<li>خط فاصله ها هم میتوانند کار کنند</li>
+<li>اگر زیر مجموعه دارید قبل آنها یک فاصله قرار دهید:
+<ul>
+<li>مثل این</li>
+<li>و یا این مورد</li>
+</ul>
+</li>
+</ul>
+<h2 id="section-6">عکس ها</h2>
+<p>اگر عکس خواستید قرار دهید این کار را کنید:</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/1280px-Markdown-mark.svg.png" alt="عکسی از لوگوی مارکداون"></p>
+<h2 id="section-7">بلاک نقل قول</h2>
+<p>اگر نقل قول دارید یک علامت &gt; قرار دهید.:</p>
+<blockquote>
+<p>در تنگنای حیرتم از نخوت رقیب / یارب روا مدار که گدا معتبر شود</p>
+<ul>
+<li>حافظ</li>
+</ul>
+</blockquote>
+<h2 id="section-8">هشدارها</h2>
+<pre><code class="language-markdown">&gt; [!NOTE]
+&gt; اگر نکته ای دارید اینجا قرار دهد.
+
+&gt; [!TIP]
+&gt; اگر اطلاعات بیشتر میخواهید بنویسید اینجا قرار دهید.
+
+&gt; [!IMPORTANT]
+&gt; نکته‌ی مهم را اینجا قرار دهید.
+
+&gt; [!CAUTION]
+&gt; خطرات مهم را اینطور گوشزد کنید.
+
+&gt; [!WARNING]
+&gt; اینجا هشدارهای خود را بنویسید.
+</code></pre>
+<p>که اینگونه رندر خواهند شد:</p>
+<div class='alert alert-info'><p class='alert-title'><i class='fa fa-exclamation-circle'></i> NOTE</p><p>اگر نکته ای دارید اینجا قرار دهد.</p></div>
+<div class='alert alert-success'><p class='alert-title'><i class='fa fa-lightbulb-o'></i> TIP</p><p>اگر اطلاعات بیشتر میخواهید بنویسید اینجا قرار دهید.</p></div>
+<div class='alert alert-primary'><p class='alert-title'><i class='fa fa-exclamation-circle'></i> IMPORTANT</p><p>نکته‌ی مهم را اینجا قرار دهید.</p></div>
+<div class='alert alert-danger'><p class='alert-title'><i class='fa fa-times-circle'></i> CAUTION</p><p>خطرات مهم را اینطور گوشزد کنید.</p></div>
+<div class='alert alert-warning'><p class='alert-title'><i class='fa fa-exclamation-triangle'></i> WARNING</p><p>اینجا هشدارهای خود را بنویسید.</p></div>
+<h2 id="section-9">کد</h2>
+<p>برای قرار دادن کد،‌ کد را در بین سه بکتیک گذاشته و کنار سه بکتیک اول نام زبان را بنویسید:</p>
+<pre><code class="language-javascript">const createElementFromString = htmlString =&gt; {
+  const div = document.createElement('div');
+  div.innerHTML = htmlString.trim();
+  return div.firstChild;
+}
+</code></pre>
+<p>یا</p>
+<pre><code class="language-csharp">public List&lt;string&gt; GetAllFiles(string srcPath)
+{
+    var files = Directory.GetFiles(srcPath);
+    return new List&lt;string&gt;(files);
+}
+</code></pre>
+<h2 id="section-10">جداول</h2>
+<p>راحتترین کار برای کشیدن جدول استفاده از خط فاصله و پایپ است.
+به این صورت که برای هدرها بعد از قراردادنشان بین پایپ زیرشان یک سری از خطوط فاصله قرار دهید.</p>
+<pre><code class="language-markdown">| این        | یک           | جدول است  |
+| ------------- |:-------------:| -----:|
+| ستون سوم      | راستچین است | $1600 |
+| ستون دوم      | وسط است      |   $12 |
+| جدول | راه راه هست      |    $1 |
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>این</th>
+<th style="text-align: center;">یک</th>
+<th style="text-align: right;">جدول است</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ستون سوم</td>
+<td style="text-align: center;">راستچین است</td>
+<td style="text-align: right;">$1600</td>
+</tr>
+<tr>
+<td>ستون دوم</td>
+<td style="text-align: center;">وسط است</td>
+<td style="text-align: right;">$12</td>
+</tr>
+<tr>
+<td>جدول</td>
+<td style="text-align: center;">راه راه هست</td>
+<td style="text-align: right;">$1</td>
+</tr>
+</tbody>
+</table>

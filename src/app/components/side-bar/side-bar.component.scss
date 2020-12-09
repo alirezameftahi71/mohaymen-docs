@@ -1,0 +1,8 @@
+.direction .search-container {
+  direction: ltr;
+
+  input[type=search] {
+    text-align: right;
+    direction: rtl;
+  }
+}

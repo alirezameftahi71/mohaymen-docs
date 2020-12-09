@@ -1,0 +1,137 @@
+<h1 id="docs-authoring-pack-for-vs-code">Docs Authoring Pack for VS Code</h1>
+<p>The Docs Authoring Pack is a collection of VS Code extensions to aid with Markdown authoring for docs.microsoft.com. The pack is <a href="https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-authoring-pack">available in the VS Code Marketplace</a> and contains the following extensions:</p>
+<blockquote>
+<p>[!div class=&quot;checklist&quot;]</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-markdown">Docs Markdown</a>: Provides Markdown authoring assistance for docs.microsoft.com (Docs) content, including basic Markdown support and support for custom Markdown syntax in Docs, such as alerts, code snippets, and non-localizable text. Now also includes some basic YAML authoring assistance, such as inserting TOC entries.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint</a>: A popular Markdown linter by David Anson to help make sure your Markdown is valid.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a>: A fully offline spell checker by Street Side Software.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-preview">Docs Preview</a>: Uses the docs.microsoft.com CSS for more accurate Markdown preview, including custom Markdown.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-article-templates">Docs Article Templates</a>: Allows users to scaffold Learn modules and apply Markdown skeleton content to new files.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-yaml">Docs YAML</a>: Provides Docs YAML schema validation and auto-complete.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-images">Docs Images</a>: Provides image compression and resizing for folders and individual files to help authors of docs.microsoft.com.</li>
+</ul>
+</blockquote>
+<h2 id="prerequisites-and-assumptions">Prerequisites and assumptions</h2>
+<p>To insert relative links, images, and other embedded content with the Docs Markdown extension, you must have your VS Code workspace scoped to the root of your cloned Open Publishing System (OPS) repo. For example, if you have cloned the docs repository to <code>C:\git\SomeDocsRepo\</code>, then open that folder or a subfolder in VS Code: <strong>File</strong> &gt; <strong>Open Folder</strong> menu,  or <code>code C:\git\SomeDocsRepo\</code> from the command line.</p>
+<p>Some syntax supported by the extension, such as alerts and snippets, are custom Markdown for OPS. Custom Markdown will not render correctly unless published via OPS.</p>
+<h2 id="how-to-use-the-docs-markdown-extension">How to use the Docs Markdown extension</h2>
+<p>To access the <strong>Docs Markdown</strong> menu, type <kbd>ALT+M</kbd>. You can click or use the up and down arrows to select the command you want. Or you can type to start filtering, then hit <kbd>ENTER</kbd> when the function you want is highlighted in the menu.</p>
+<p>See the <a href="https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-markdown">Docs Markdown readme</a> for an up-to-date list of commands.</p>
+<h2 id="how-to-generate-a-master-redirect-file">How to generate a master redirect file</h2>
+<p>The Docs Markdown extension includes a script to generate or update a master redirection file for a repo, based on the <code>redirect_url</code> metadata in individual files. This script checks every Markdown file in the repo for <code>redirect_url</code>, adds the redirection metadata to the master redirection file (<em>.openpublishing.redirection.json</em>) for the repo, and moves the redirected files to a folder outside the repo. To run the script:</p>
+<ol>
+<li>Select <kbd>F1</kbd> to open the VS Code command palette.</li>
+<li>Start typing &quot;Docs: Generate...&quot;</li>
+<li>Select the command <code>Docs: Generate master redirection file</code>.</li>
+<li>When the script finishes running, the redirection results will show in the VS Code output pane, and the removed Markdown files will be added to the Docs Authoring\redirects folder under your default path.</li>
+<li>Review the results. If they are as expected, submit a pull request to update the repo.</li>
+</ol>
+<h2 id="how-to-assign-keyboard-shortcuts">How to assign keyboard shortcuts</h2>
+<ol>
+<li><p>Type <kbd>CTRL+K</kbd> then <kbd>Ctrl+S</kbd> to open the <strong>Keyboard Shortcuts</strong> list.</p>
+</li>
+<li><p>Search for the command, such as <code>formatBold</code>, for which you want to create a custom key binding.</p>
+</li>
+<li><p>Click the plus that appears near the command name when you mouse over the line.</p>
+</li>
+<li><p>After a new input box is visible, type the keyboard shortcut you want to bind to that particular command. For example, to use the common shortcut for bold, type <kbd>Ctrl+B</kbd>.</p>
+</li>
+<li><p>It's a good idea to insert a <code>when</code> clause into your key binding, so it won't be available in files other than Markdown. To do this, open <em>keybindings.json</em> and insert the following line below the command name (be sure to add a comma between lines):</p>
+<p><code>&quot;when&quot;: &quot;editorTextFocus &amp;&amp; editorLangId == 'markdown'&quot;</code></p>
+<p>Your completed custom key binding should look like this in <em>keybindings.json</em>:</p>
+<pre><code class="language-json">[
+    {
+        &quot;key&quot;: &quot;ctrl+b&quot;,
+        &quot;command&quot;: &quot;formatBold&quot;,
+        &quot;when&quot;: &quot;editorTextFocus &amp;&amp; editorLangId == 'markdown'&quot;
+    }
+]
+</code></pre>
+<blockquote>
+<p>[!TIP]
+Place your key bindings in this file to overwrite the defaults</p>
+</blockquote>
+</li>
+<li><p>Save <em>keybindings.json</em>.</p>
+</li>
+</ol>
+<p>For more information on key bindings, see the <a href="https://code.visualstudio.com/docs/getstarted/keybindings">VS Code docs</a>.</p>
+<h2 id="how-to-show-the-legacy-gauntlet-toolbar">How to show the legacy &quot;Gauntlet&quot; toolbar</h2>
+<p>Former users of the extension code-named &quot;Gauntlet&quot; will notice that the authoring toolbar no longer appears at the bottom of the VS Code window when the Docs Markdown Extension is installed. This is because the toolbar took up a large space on the VS Code status bar and did not follow best practices for extension UX, so it is deprecated in the new extension. However, you can optionally show the toolbar by updating your VS Code settings.json file as follows:</p>
+<ol>
+<li><p>In VS Code, go to <strong>File</strong> &gt; <strong>Preferences</strong> &gt; <strong>Settings</strong> or select <kbd>Ctrl+,</kbd>.</p>
+</li>
+<li><p>Select <strong>User Settings</strong> to change the settings for all VS Code workspaces or <strong>Workspace Settings</strong> to change them for just the current workspace.</p>
+</li>
+<li><p>Select <strong>Extensions</strong> &gt; <strong>Docs Markdown Extension Configuration</strong>, and then select <strong>Show the legacy toolbar in the bottom status bar</strong>.</p>
+<p><img src="docs-authoring/media/show-gauntlet-bar.png" alt="Show legacy toolbar setting in VS Code" /></p>
+</li>
+</ol>
+<p>Once you've made your selection, VS Code updates the <em>settings.json</em> file. You will then be prompted to reload the window for the changes to take effect.</p>
+<p>Newer commands added to the extension will not be available from the toolbar.</p>
+<h2 id="how-to-use-docs-templates">How to use Docs templates</h2>
+<p>The Docs Article Templates extension lets writers in VS Code pull a Markdown template from a centralized store and apply it to a file. Templates can help ensure that required metadata is included in articles, that content standards are followed, and so on. Templates are managed as Markdown files in a public GitHub repository.</p>
+<h3 id="to-apply-a-template-in-vs-code">To apply a template in VS Code</h3>
+<ol>
+<li>Ensure the Docs Article Templates extension is installed and enabled.</li>
+<li>If you don't have the Docs Markdown extension installed, click <kbd>F1</kbd> to open the command palette, start typing &quot;template&quot; to filter, then click <code>Docs: Template</code>. If you do have Docs Markdown installed, you can use either the command palette or click <kbd>Alt+M</kbd> to bring up the Docs Markdown QuickPick menu, then select <code>Template</code> from the list.</li>
+<li>Select the desired template from the list that appears.</li>
+</ol>
+<h3 id="to-add-your-github-id-andor-microsoft-alias-to-your-vs-code-settings">To add your GitHub ID and/or Microsoft alias to your VS Code settings</h3>
+<p>The Templates extension supports three dynamic metadata fields: author, ms.author, and ms.date. That means that if a template creator uses these fields in the metadata header of a Markdown template, they will be auto-populated in your file when you apply the template, as follows:</p>
+<p>| Metadata field | Value |
+|--|--|
+| <code>author</code> | Your GitHub alias, if specified in your VS Code settings file. |
+| <code>ms.author</code> | Your Microsoft alias, if specified in your VS Code settings file. If you are not a Microsoft employee, leave unspecified. |
+| <code>ms.date</code> | The current date in the Docs-supported format, <code>MM/DD/YYYY</code>. The date is not automatically updated if you subsequently update the file - you must update it manually. This field is used to indicate the &quot;article freshness&quot;. |</p>
+<h3 id="to-set-author-andor-msauthor">To set author and/or ms.author</h3>
+<ol>
+<li>In VS Code, go to <strong>File</strong> &gt; <strong>Preferences</strong> &gt; <strong>Settings</strong> or select <kbd>Ctrl+,</kbd>.</li>
+<li>Select <strong>User</strong> settings to change the settings for all VS Code workspaces, or <strong>Workspace</strong> settings to change them for just the current workspace.</li>
+<li>In the Default Settings pane on the left, find <strong>Docs Article Templates Extension Configuration</strong>, click the pencil icon next to the desired setting, then click Replace in Settings.</li>
+<li>The <strong>User</strong> settings pane will open side by side, with a new entry at the bottom.</li>
+<li>Add your GitHub ID or Microsoft email alias, as appropriate, and save the file.</li>
+<li>You might need to close and restart VS Code for the changes to take effect.</li>
+<li>Now, when you apply a template that uses dynamic fields, your GitHub ID and/or Microsoft alias will be auto-populated in the metadata header.</li>
+</ol>
+<h3 id="to-make-a-new-template-available-in-vs-code">To make a new template available in VS Code</h3>
+<ol>
+<li>Draft your template as a Markdown file.</li>
+<li>Submit a pull request to the templates folder of the <a href="https://github.com/MicrosoftDocs/content-templates">MicrosoftDocs/content-templates</a> repo.</li>
+</ol>
+<p>The docs.microsoft.com team will review your template and merge the PR if it meets docs.microsoft.com style guidelines. Once merged, the template will be available to all users of the Docs Article Templates extension.</p>
+<h2 id="demo-several-features">Demo several features</h2>
+<p>Here's a short video that demonstrates the following features of the Docs Authoring Pack:</p>
+<ul>
+<li><strong>YAML files</strong>
+<ul>
+<li>Support for &quot;Docs: Link to file in repo&quot;</li>
+</ul>
+</li>
+<li><strong>Markdown files</strong>
+<ul>
+<li>Update &quot;ms.date&quot; Metadata Value context menu option</li>
+<li>Code auto-completion support for code-fence language identifiers</li>
+<li>Unrecognized code-fence language identifier warnings / auto correction support</li>
+<li>Sort selection ascending (A to Z)</li>
+<li>Sort selection descending (Z to A)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[!VIDEO https://www.youtube.com/embed/6zfbBRdjlw8]</p>
+</blockquote>
+<h2 id="contribution-expectations">Contribution expectations</h2>
+<p>The Docs Authoring Pack extension is open source and available for contributions to anyone with a GitHub account. There is a dedicated internal Microsoft team that actively works on this project. This team monitors issues and pull requests. The service level agreement (SLA) and expectation of getting a pull request reviewed is currently one week. The team is undergoing automation efforts to improve this turn around time.</p>
+<h2 id="next-steps">Next steps</h2>
+<p>Explore the various features available in the Docs Authoring Pack, Visual Studio Code extension.</p>
+<ul>
+<li><a href="docs-authoring/dev-lang-completion.md">Dev lang completion</a></li>
+<li><a href="docs-authoring/image-compression.md">Image compression</a></li>
+<li><a href="docs-authoring/metadata-updates.md">Metadata updates</a></li>
+<li><a href="docs-authoring/reformat-table.md">Reformat table</a></li>
+<li><a href="docs-authoring/smart-quote-replacement.md">Smart quote replacement</a></li>
+<li><a href="docs-authoring/sort-redirects.md">Sort redirects</a></li>
+<li><a href="docs-authoring/sort-selection.md">Sort selection</a></li>
+</ul>

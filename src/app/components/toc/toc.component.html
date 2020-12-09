@@ -1,0 +1,16 @@
+<aside class="pt-1 flex-column pt-lg-4 sticky-top">
+  <p class="mx-lg-3 display-5 font-weight-bold">در این صفحه می‌خوانید</p>
+  <ul class="list-unstyled px-0 mt-2">
+    <li *ngFor="let item of items" class="my-1">
+      <div class="d-inline-flex w-100">
+        <a class="text-decoration-none px-3 w-100"
+           [routerLink]="item.url"
+           [fragment]="item.fragment">
+          <div class="toc-text w-100 {{item.isRtl ? 'dynamic-text-align-right' : 'dynamic-text-align-left'}}">
+            {{item.title}}
+          </div>
+        </a>
+      </div>
+    </li>
+  </ul>
+</aside>
